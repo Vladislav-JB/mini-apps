@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f1">
+  <meta name="description" content="Простой список задач, который помогает держать дела под контролем. Задачи сохраняются в браузере.">
+  <title>Мой день — список задач</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Мой день — на главную">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4L19 7"/></svg></span>
+        <span>мой день</span>
+      </a>
+      <span class="privacy-note"><span class="privacy-dot"></span> Только на этом устройстве</span>
+    </header>
+
+    <section class="workspace" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow"><span class="sun-icon" aria-hidden="true">✳</span> ВАШ СПОКОЙНЫЙ ПЛАН</p>
+        <h1 id="page-title">День начинается<br><span>с одного дела.</span></h1>
+        <p class="intro-copy">Запишите важное. Остальное подождёт.</p>
+      </div>
+
+      <section class="task-card" aria-label="Список задач">
+        <form class="task-form" id="task-form">
+          <label class="sr-only" for="task-input">Новая задача</label>
+          <span class="input-spark" aria-hidden="true">＋</span>
+          <input id="task-input" name="task" type="text" maxlength="180" placeholder="Например, позвонить клиенту" autocomplete="off" required>
+          <button class="add-button" type="submit"><span>Добавить</span><span aria-hidden="true">↗</span></button>
+        </form>
+
+        <div class="list-toolbar">
+          <div class="list-heading">
+            <h2>Ваши задачи</h2>
+            <span class="task-count" id="task-count" aria-live="polite">0</span>
+          </div>
+          <div class="filters" role="group" aria-label="Показать задачи">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
+            <button class="filter-button" type="button" data-filter="active" aria-pressed="false">В работе</button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Готово</button>
+          </div>
+        </div>
+
+        <ul class="task-list" id="task-list" aria-label="Задачи"></ul>
+        <div class="empty-state" id="empty-state">
+          <span class="empty-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M15 25.5 21 31l12-14"/><circle cx="24" cy="24" r="19"/></svg></span>
+          <p class="empty-title" id="empty-title">Пока всё чисто</p>
+          <p class="empty-copy" id="empty-copy">Добавьте первое дело — и вы уже сдвинулись с места.</p>
+        </div>
+
+        <footer class="list-footer">
+          <p><span class="footer-check" aria-hidden="true">✓</span> <span id="remaining-text">Нет дел в работе</span></p>
+          <button class="clear-button" type="button" id="clear-completed" hidden>Удалить выполненные</button>
+        </footer>
+      </section>
+
+      <p class="save-hint"><span aria-hidden="true">↳</span> Ваш список сохранится, даже если закрыть страницу</p>
+    </section>
+
+    <footer class="page-footer"><span>МЕНЬШЕ ШУМА — БОЛЬШЕ ЯСНОСТИ</span><span>Сделано для хорошего дня <span aria-hidden="true">·</span></span></footer>
+  </main>
+  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
